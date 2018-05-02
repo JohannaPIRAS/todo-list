@@ -1,0 +1,21 @@
+body {
+    size: 100%;
+    margin-left: 35%;
+    background-image: url("images/todolist.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+p {
+    font-size: 32px;
+    font-style: bold;
+    color: yellow;
+}
+
+form {
+    margin-top: 350px;
+}
+
+.done {
+    text-decoration: line-through;
+}

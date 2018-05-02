@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title> Liste de Tâches à Faire !!!</title>
+     <link rel="stylesheet" type="text/css" href="index.css">
+  </head>
+  <body>
+    <div id="titre">
+        <p>{{ message }}</p>
+
+<!--la directive v-on pour attacher des écouteurs d’évènements qui invoquent des méthodes-->
+        <button v-on:click="reverseMessage">click</button>
+    </div>
+    <div id="corps">
+      
+<!--le modificateur .prevent dit à la directive v-for d’appeler event.preventDefault() lorsque l’évènement survient.-->
+      <form @submit.prevent="ajouterTache">
+        <div v-for="nvlleTache">Nouvelle Tâche</div>
+        
+<!--la directive v-model qui fait de la liaison de données bidirectionnelle entre les champs d’un formulaire et l’état de l’application-->
+
+        <input v-model="nvlleTache" type="text" name="nvlleTache" id="nvlleTache" value="">
+        <button type="submit" name="button">Ajouter</button>
+      </form>
+
+<!-- syntaxe complète 
+v-on:click="doSomething"-->
+
+      <button @click="toutSupprimer" type="button" name="button">Tout supprimer</button>
+      <ul>
+
+<!--la directive v-for pour faire le rendu d’une liste d’éléments
+la directive v-for peut être utilisée pour afficher une liste d’éléments-->
+        <li v-for="todo in todos">
+
+<!--v-model sur un composant utilise input comme évènement
+les cases à cocher peuvent vouloir utiliser l’attribut value-->
+          
+          <input type="checkbox" v-model="todo.done">
+<!--Il est possible de passer un objet à v-bind:class pour permuter les classes automatiquement -->
+          <div v-bind:class="{ done: todo.done }">{{todo.title}}</div>
+          <button @click="supprimerTache(todo)" type="button" name="button">effacer</button>
+        </li>
+      </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="app.js" charset="utf-8"></script>
+  </body>
+</html>
